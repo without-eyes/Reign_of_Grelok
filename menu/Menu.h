@@ -6,12 +6,13 @@ class Menu {
 public:
     explicit Menu(const std::vector<Command*>& vCommandList);
 
-    static void color(int nColor);
-    static void placeText(short x, short y);
-
-    [[noreturn]] void start();
-    void userInput(int& nUserMenuPosition);
+    void start();
 
 private:
+    static void color(int nColor);
+    static void placeText(short x, short y);
+    static void removeBlinkingUnderscore();
+    void userInput(int& nUserMenuPosition, bool& exitMenu);
+
     std::vector<Command*> vCommandList;
 };

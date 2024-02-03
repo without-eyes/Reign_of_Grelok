@@ -19,4 +19,6 @@ add_executable(Reign_of_Grelok menu/main.cpp
         action/movement/GoWest.cpp
         player/Player.h
         player/Player.cpp
+        action/special/LookAround.h
+        action/special/LookAround.cpp
 )

@@ -8,3 +8,11 @@ void Player::changeY(const short nValue) {
     sY += nValue;
 }
 
+short Player::getX() {
+    return sX;
+}
+
+short Player::getY() {
+    return sY;
+}
+
