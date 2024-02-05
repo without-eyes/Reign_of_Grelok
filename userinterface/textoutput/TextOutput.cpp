@@ -1,6 +1,6 @@
 #include "TextOutput.h"
 
-void TextOutput::addingBlinkingUnderscore() {
+void TextOutput::addBlinkingUnderscore() {
     HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO cursorInfo;
     GetConsoleCursorInfo(out, &cursorInfo);
@@ -38,6 +38,8 @@ void TextOutput::typingEffectOutput(const char* text) {
 void TextOutput::writeText(const std::vector<std::string>& text) {
     system("cls");
 
+    TextOutput::removeBlinkingUnderscore();
+
     for (const std::string& line : text) {
         if (line != text.back()) {
             TextOutput::typingEffectOutput(("\n  " + line).c_str());
@@ -45,6 +47,23 @@ void TextOutput::writeText(const std::vector<std::string>& text) {
             TextOutput::typingEffectOutput(("\n\n  > " + line).c_str());
         }
     }
+
+    TextOutput::addBlinkingUnderscore();
+
+    Sleep(4000);
+    system("cls");
+
+    TextOutput::removeBlinkingUnderscore();
+
+    for (const std::string& line : text) {
+        if (line != text.back()) {
+            std::cout << "\n  " + line;
+        } else {
+            std::cout << "\n\n  > ";
+        }
+    }
+
+    TextOutput::addBlinkingUnderscore();
 
     getch();
     system("cls");

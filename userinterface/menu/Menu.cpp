@@ -24,7 +24,7 @@ void Menu::start(const std::vector<Command*>& vCommandList) {
         TextOutput::changeColor(7);
         std::cout << "> ";
 
-        TextOutput::addingBlinkingUnderscore();
+        TextOutput::addBlinkingUnderscore();
 
         userInput(vCommandList, nUserMenuPosition, exitMenu);
 
@@ -75,7 +75,7 @@ void Menu::start(const std::vector<std::string> &vItems) {
         TextOutput::changeColor(7);
         std::cout << "> " + itemDescription;
 
-        TextOutput::addingBlinkingUnderscore();
+        TextOutput::addBlinkingUnderscore();
 
         userInput(vItems, nUserInventoryPosition, exitInventory, itemDescription);
 

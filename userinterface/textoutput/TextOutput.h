@@ -4,7 +4,7 @@
 
 class TextOutput {
 public:
-    static void addingBlinkingUnderscore();
+    static void addBlinkingUnderscore();
     static void removeBlinkingUnderscore();
     static void changeColor(int nColor);
     static void placeStringOnScreen(short x, short y);
