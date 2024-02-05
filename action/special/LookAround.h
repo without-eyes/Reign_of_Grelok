@@ -1,8 +1,7 @@
 #pragma once
 
 #include "../interface/Command.h"
-#include <conio.h>
-#include <iostream>
+#include "../../userinterface/textoutput/TextOutput.h"
 
 class LookAround : public Command {
 public:

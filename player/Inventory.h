@@ -1,18 +1,21 @@
 #pragma once
 
-#include <utility>
-#include <vector>
-#include <string>
+#include "../action/interface/Command.h"
+#include "../userinterface/menu/Menu.h"
 
 
-class Inventory {
+class Inventory : public Command{
 public:
     explicit Inventory();
     virtual ~Inventory();
 
-    void show();
-    void add(std::string sItemName);
-    void remove(std::string sItemName);
+    void execute() override;
+    std::string getDescription() const override;
+
+    static void show();
+    static void addItem(const std::string& sItemName);
+    static void removeItem(const std::string& sItemName);
+    static std::string getItemDescription(const std::string& sItemName);
 
 private:
     std::vector<std::string> vItems;

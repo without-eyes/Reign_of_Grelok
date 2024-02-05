@@ -3,12 +3,12 @@ project(Reign_of_Grelok)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Reign_of_Grelok menu/main.cpp
+add_executable(Reign_of_Grelok userinterface/menu/main.cpp
         player/Inventory.h
         player/Inventory.cpp
-        menu/Menu.h
+        userinterface/menu/Menu.h
         action/interface/Command.h
-        menu/Menu.cpp
+        userinterface/menu/Menu.cpp
         action/movement/GoNorth.h
         action/movement/GoNorth.cpp
         action/movement/GoSouth.h
@@ -21,4 +21,7 @@ add_executable(Reign_of_Grelok menu/main.cpp
         player/Player.cpp
         action/special/LookAround.h
         action/special/LookAround.cpp
+        userinterface/textoutput/TextOutput.h
+        userinterface/textoutput/TextOutput.cpp
+        other/includes.h
 )
