@@ -17,6 +17,5 @@ public:
     static void removeItem(const std::string& sItemName);
     static std::string getItemDescription(const std::string& sItemName);
 
-private:
-    std::vector<std::string> vItems;
+    inline static std::vector<std::string> vItems;
 };

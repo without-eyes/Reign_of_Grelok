@@ -23,7 +23,16 @@ void LookAround::execute() {
         TextOutput::writeText(text);
 
     } else if (sLocationName == "Mountainside") {
+        text.emplace_back("You are on the craggy, windblasted face of a mountain. Stormclouds");
+        text.emplace_back("coil above the summit, pelting you and the sparse vegetation with");
+        text.emplace_back("torrential downpour. Far below, beyond the foothills, a wide");
+        text.emplace_back("plain stretches across the southern horizon.\n");
+        text.emplace_back("Grelok is here, spewing heresies.\n");
+        text.emplace_back("A glint between the rocks catches your eye.");
 
+        text.emplace_back(" You examine your surroundings...");
+
+        TextOutput::writeText(text);
     }
 }
 

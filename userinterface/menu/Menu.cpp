@@ -6,6 +6,7 @@ void Menu::start(const std::vector<Command*>& vCommandList) {
     std::vector<int> vLineColor(vCommandList.size(), 7);
     vLineColor[0] = 10;
 
+    sLowerText = "";
     int nUserMenuPosition = 1;
     bool exitMenu = false;
 
@@ -22,7 +23,7 @@ void Menu::start(const std::vector<Command*>& vCommandList) {
 
         TextOutput::placeStringOnScreen(sX, sY + 3);
         TextOutput::changeColor(7);
-        std::cout << "> ";
+        std::cout << "> " + sLowerText;
 
         TextOutput::addBlinkingUnderscore();
 
@@ -53,7 +54,7 @@ void Menu::start(const std::vector<std::string> &vItems) {
     std::vector<int> vLineColor(vItems.size() + 1, 7);
     vLineColor[0] = 10;
 
-    std::string itemDescription;
+    sLowerText = "";
     int nUserInventoryPosition = 1;
     bool exitInventory = false;
 
@@ -73,11 +74,11 @@ void Menu::start(const std::vector<std::string> &vItems) {
 
         TextOutput::placeStringOnScreen(sX, sY + 3);
         TextOutput::changeColor(7);
-        std::cout << "> " + itemDescription;
+        std::cout << "> " + sLowerText;
 
         TextOutput::addBlinkingUnderscore();
 
-        userInput(vItems, nUserInventoryPosition, exitInventory, itemDescription);
+        userInput(vItems, nUserInventoryPosition, exitInventory, sLowerText);
 
         fill(vLineColor.begin(), vLineColor.end(), 7);
 
@@ -85,7 +86,7 @@ void Menu::start(const std::vector<std::string> &vItems) {
     }
 }
 
-void Menu::userInput(const std::vector<std::string> &vItems, int &nUserInventoryPosition, bool &exitInventory, std::string& itemDescription) {
+void Menu::userInput(const std::vector<std::string> &vItems, int &nUserInventoryPosition, bool &exitInventory, std::string& lowerText) {
     int key = _getch();
 
     if (key == 72 && (nUserInventoryPosition >= 2 && nUserInventoryPosition <= vItems.size() + 1)) {
@@ -96,7 +97,7 @@ void Menu::userInput(const std::vector<std::string> &vItems, int &nUserInventory
         if (nUserInventoryPosition == vItems.size() + 1) {
             exitInventory = true;
         } else {
-            itemDescription = Inventory::getItemDescription(vItems[nUserInventoryPosition - 1]);
+            lowerText = Inventory::getItemDescription(vItems[nUserInventoryPosition - 1]);
         }
     }
 }

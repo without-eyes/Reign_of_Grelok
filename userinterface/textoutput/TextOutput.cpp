@@ -44,7 +44,7 @@ void TextOutput::writeText(const std::vector<std::string>& text) {
         if (line != text.back()) {
             TextOutput::typingEffectOutput(("\n  " + line).c_str());
         } else {
-            TextOutput::typingEffectOutput(("\n\n  > " + line).c_str());
+            TextOutput::typingEffectOutput(("\n\n\n  > " + line).c_str());
         }
     }
 
@@ -59,7 +59,7 @@ void TextOutput::writeText(const std::vector<std::string>& text) {
         if (line != text.back()) {
             std::cout << "\n  " + line;
         } else {
-            std::cout << "\n\n  > ";
+            std::cout << "\n\n\n  > ";
         }
     }
 

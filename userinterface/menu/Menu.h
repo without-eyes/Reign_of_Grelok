@@ -7,6 +7,8 @@
 
 class Menu {
 public:
+    inline static std::string sLowerText;
+
     static void start(const std::vector<Command*>& vCommandList);
     static void start(const std::vector<std::string>& vItems);
 

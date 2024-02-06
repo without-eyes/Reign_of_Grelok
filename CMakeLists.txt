@@ -24,4 +24,10 @@ add_executable(Reign_of_Grelok userinterface/menu/main.cpp
         userinterface/textoutput/TextOutput.h
         userinterface/textoutput/TextOutput.cpp
         other/includes.h
+        action/special/UseSwordGrelok.cpp
+        action/special/UseSwordGrelok.h
+        action/special/InvestigateGlintingObject.cpp
+        action/special/InvestigateGlintingObject.h
+        action/special/LocationEvents.cpp
+        action/special/LocationEvents.h
 )
