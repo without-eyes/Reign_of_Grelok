@@ -9,18 +9,18 @@ add_executable(Reign_of_Grelok userinterface/menu/main.cpp
         userinterface/menu/Menu.h
         action/interface/Command.h
         userinterface/menu/Menu.cpp
-        action/movement/GoNorth.h
-        action/movement/GoNorth.cpp
-        action/movement/GoSouth.h
-        action/movement/GoEast.h
-        action/movement/GoWest.h
-        action/movement/GoSouth.cpp
-        action/movement/GoEast.cpp
-        action/movement/GoWest.cpp
+        action/basic/GoNorth.h
+        action/basic/GoNorth.cpp
+        action/basic/GoSouth.h
+        action/basic/GoEast.h
+        action/basic/GoWest.h
+        action/basic/GoSouth.cpp
+        action/basic/GoEast.cpp
+        action/basic/GoWest.cpp
         player/Player.h
         player/Player.cpp
-        action/special/LookAround.h
-        action/special/LookAround.cpp
+        action/basic/LookAround.h
+        action/basic/LookAround.cpp
         userinterface/textoutput/TextOutput.h
         userinterface/textoutput/TextOutput.cpp
         other/includes.h

@@ -1,9 +1,9 @@
 #include "LookAround.h"
 
-LookAround::LookAround(short sX, short sY) {
-    if (sX == 0 && sY == 0)
+LookAround::LookAround() {
+    if (Player::getX() == 0 && Player::getY() == 0)
         sLocationName = "Plains";
-    else if (sX == 0 && sY == 1)
+    else if (Player::getX() == 0 && Player::getY() == 1)
         sLocationName = "Mountainside";
 }
 
@@ -34,6 +34,8 @@ void LookAround::execute() {
 
         TextOutput::writeText(text);
     }
+
+    LocationEvents::changeValueLookedAround(Player::getX(), Player::getY());
 }
 
 std::string LookAround::getDescription() const {

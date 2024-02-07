@@ -6,7 +6,6 @@ void Menu::start(const std::vector<Command*>& vCommandList) {
     std::vector<int> vLineColor(vCommandList.size(), 7);
     vLineColor[0] = 10;
 
-    sLowerText = "";
     int nUserMenuPosition = 1;
     bool exitMenu = false;
 

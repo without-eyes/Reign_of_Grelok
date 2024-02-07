@@ -6,9 +6,6 @@
 
 class Inventory : public Command{
 public:
-    explicit Inventory();
-    virtual ~Inventory();
-
     void execute() override;
     std::string getDescription() const override;
 
@@ -17,5 +14,5 @@ public:
     static void removeItem(const std::string& sItemName);
     static std::string getItemDescription(const std::string& sItemName);
 
-    inline static std::vector<std::string> vItems;
+    inline static std::vector<std::string> vItems = {"Rusty Sword", "Drinking Flask"};
 };
