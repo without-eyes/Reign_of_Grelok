@@ -27,37 +27,55 @@ void TextOutput::placeStringOnScreen(const short sX, const short sY) {
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coordinates);
 }
 
-void TextOutput::typingEffectOutput(const char* text) {
-    while (*text) {
-        printf("%c\xDB", *text++);
+void TextOutput::typingEffectOutput(const char* aText) {
+    while (*aText) {
+        printf("%c\xDB", *aText++);
         fflush(stdout);
         Sleep(5);
     }
 }
 
-void TextOutput::writeText(const std::vector<std::string>& text) {
+void TextOutput::writeText(const std::vector<std::string>& vText) {
     system("cls");
 
     TextOutput::removeBlinkingUnderscore();
 
-    for (const std::string& line : text) {
-        if (line != text.back()) {
-            TextOutput::typingEffectOutput(("\n  " + line).c_str());
+    bool bEnterPressed = false;
+
+    for (const std::string& sLine : vText) {
+        if (_kbhit() && getch() == 13) {
+            bEnterPressed = true;
+            break;
+        }
+
+        if (sLine != vText.back()) {
+            TextOutput::typingEffectOutput(("\n  " + sLine).c_str());
         } else {
-            TextOutput::typingEffectOutput(("\n\n\n  > " + line).c_str());
+            TextOutput::typingEffectOutput(("\n\n\n  > " + sLine).c_str());
+        }
+    }
+
+    if (bEnterPressed) {
+        system("cls");
+        for (const std::string& sLine : vText) {
+            if (sLine != vText.back()) {
+                std::cout << "\n  " + sLine;
+            } else {
+                std::cout << "\n\n\n  > " + sLine;
+            }
         }
     }
 
     TextOutput::addBlinkingUnderscore();
 
-    Sleep(4000);
+    Sleep(3000);
     system("cls");
 
     TextOutput::removeBlinkingUnderscore();
 
-    for (const std::string& line : text) {
-        if (line != text.back()) {
-            std::cout << "\n  " + line;
+    for (const std::string& sLine : vText) {
+        if (sLine != vText.back()) {
+            std::cout << "\n  " + sLine;
         } else {
             std::cout << "\n\n\n  > ";
         }

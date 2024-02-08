@@ -6,11 +6,6 @@
 
 class LookAround : public Command {
 public:
-    LookAround();
-
     void execute() override;
     std::string getDescription() const override;
-
-private:
-    std::string sLocationName;
 };

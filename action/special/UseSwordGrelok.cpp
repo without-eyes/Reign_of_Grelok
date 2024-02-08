@@ -1,8 +1,8 @@
 #include "UseSwordGrelok.h"
 
 void UseSwordGrelok::execute() {
-    if (Inventory::vItems[0] == "Rusty Sword") {
-        Menu::sLowerText = "Your puny weapons are useless on Grelok.";
+    if (Inventory::hasItem("Rusty Sword")) {
+        Menu::setLowerText("Your puny weapons are useless on Grelok.");
     } else {
 
     }

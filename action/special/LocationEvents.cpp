@@ -7,11 +7,3 @@ bool LocationEvents::isLookedAround(int x, int y) {
 void LocationEvents::changeValueLookedAround(int x, int y) {
     aIsLookedAround[y][x] = true;
 }
-
-bool LocationEvents::isGemstonePicked() {
-    return bIsGemstonePicked;
-}
-
-void LocationEvents::changeValueGemstoneEvent() {
-    bIsGemstonePicked = true;
-}

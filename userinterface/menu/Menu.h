@@ -7,12 +7,13 @@
 
 class Menu {
 public:
-    inline static std::string sLowerText;
-
     static void start(const std::vector<Command*>& vCommandList);
     static void start(const std::vector<std::string>& vItems);
+    static void setLowerText(const std::string& sText);
 
 private:
-    static void userInput(const std::vector<Command*>& vCommandList, int& nUserMenuPosition, bool& exitMenu);
-    static void userInput(const std::vector<std::string>& vItems, int& nUserInventoryPosition, bool& exitInventory, std::string& itemDescription);
+    inline static std::string sLowerText;
+
+    static void userInput(const std::vector<Command*>& vCommandList, int& nUserMenuPosition, bool& bExitMenu);
+    static void userInput(const std::vector<std::string>& vItems, int nMenuSize, int& nUserInventoryPosition, bool& bExitInventory, std::string& sItemDescription);
 };

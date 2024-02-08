@@ -34,7 +34,7 @@ void Menu::start(const std::vector<Command*>& vCommandList) {
     }
 }
 
-void Menu::userInput(const std::vector<Command*>& vCommandList, int& nUserMenuPosition, bool& exitMenu) {
+void Menu::userInput(const std::vector<Command*>& vCommandList, int& nUserMenuPosition, bool& bExitMenu) {
     int key = _getch();
 
     if (key == 72 && (nUserMenuPosition >= 2 && nUserMenuPosition <= vCommandList.size())) {
@@ -43,21 +43,22 @@ void Menu::userInput(const std::vector<Command*>& vCommandList, int& nUserMenuPo
         nUserMenuPosition++;
     } else if (key == '\r') {
         vCommandList[nUserMenuPosition - 1]->execute();
-        exitMenu = true;
+        bExitMenu = true;
     }
 }
 
 void Menu::start(const std::vector<std::string> &vItems) {
     system("cls");
 
-    std::vector<int> vLineColor(vItems.size() + 1, 7);
+    int nMenuSize = vItems.size() + 1;
+    std::vector<int> vLineColor(nMenuSize, 7);
     vLineColor[0] = 10;
 
     sLowerText = "";
     int nUserInventoryPosition = 1;
-    bool exitInventory = false;
+    bool bExitInventory = false;
 
-    while (!exitInventory) {
+    while (!bExitInventory) {
         TextOutput::removeBlinkingUnderscore();
 
         short sX = 3, sY = 1;
@@ -77,7 +78,7 @@ void Menu::start(const std::vector<std::string> &vItems) {
 
         TextOutput::addBlinkingUnderscore();
 
-        userInput(vItems, nUserInventoryPosition, exitInventory, sLowerText);
+        userInput(vItems, nMenuSize, nUserInventoryPosition, bExitInventory, sLowerText);
 
         fill(vLineColor.begin(), vLineColor.end(), 7);
 
@@ -85,18 +86,22 @@ void Menu::start(const std::vector<std::string> &vItems) {
     }
 }
 
-void Menu::userInput(const std::vector<std::string> &vItems, int &nUserInventoryPosition, bool &exitInventory, std::string& lowerText) {
+void Menu::userInput(const std::vector<std::string> &vItems, int nMenuSize, int &nUserInventoryPosition, bool &bExitInventory, std::string& sItemDescription) {
     int key = _getch();
 
-    if (key == 72 && (nUserInventoryPosition >= 2 && nUserInventoryPosition <= vItems.size() + 1)) {
+    if (key == 72 && (nUserInventoryPosition >= 2 && nUserInventoryPosition <= nMenuSize)) {
         nUserInventoryPosition--;
     } else if (key == 80 && (nUserInventoryPosition >= 1 && nUserInventoryPosition <= vItems.size())) {
         nUserInventoryPosition++;
     } else if (key == '\r') {
-        if (nUserInventoryPosition == vItems.size() + 1) {
-            exitInventory = true;
+        if (nUserInventoryPosition == nMenuSize) {
+            bExitInventory = true;
         } else {
-            lowerText = Inventory::getItemDescription(vItems[nUserInventoryPosition - 1]);
+            sItemDescription = Inventory::getItemDescription(vItems[nUserInventoryPosition - 1]);
         }
     }
+}
+
+void Menu::setLowerText(const std::string &sText) {
+    sLowerText = sText;
 }
