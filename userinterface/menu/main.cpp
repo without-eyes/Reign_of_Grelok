@@ -7,6 +7,8 @@
 #include "../../action/special/LocationEvents.h"
 #include "../../action/special/InvestigateGlintingObject.h"
 #include "../../action/special/UseSwordGrelok.h"
+#include "../../action/special/UseSwordZombie.h"
+#include "../../action/special/ExamineGrave.h"
 
 int main() {
     while (true) {
@@ -15,14 +17,17 @@ int main() {
         std::vector<Command*> vCommandList;
 
         if (Player::getX() == 0 && Player::getY() == 0) {
+
             vCommandList.push_back(new LookAround);
             vCommandList.push_back(new GoNorth);
             vCommandList.push_back(new GoSouth);
             vCommandList.push_back(new GoEast);
             vCommandList.push_back(new GoWest);
             vCommandList.push_back(new Inventory);
+
         } else if (Player::getX() == 0 && Player::getY() == 1) {
             SetConsoleTitle("Reign of Grelok (beta v.632) - Grelok is here, spewing heresies.");
+
             vCommandList.push_back(new LookAround);
             if (LocationEvents::isLookedAround(Player::getX(), Player::getY())) {
                 if (!Inventory::hasItem("Raw Gemstone"))
@@ -32,16 +37,18 @@ int main() {
             vCommandList.push_back(new GoSouth);
             vCommandList.push_back(new Inventory);
             // Back ???
+
         } else if (Player::getX() == 1 && Player::getY() == 0) {
+
             vCommandList.push_back(new LookAround);
-            if (LocationEvents::isLookedAround(Player::getX(), Player::getY())) {
-                if (!Inventory::hasItem("Raw Gemstone"))
-                    vCommandList.push_back(new InvestigateGlintingObject);
-                vCommandList.push_back(new UseSwordGrelok);
+            if (!LocationEvents::isZombieKilled()) {
+                vCommandList.push_back(new UseSwordZombie);
             }
+            vCommandList.push_back(new ExamineGrave);
             vCommandList.push_back(new GoWest);
             vCommandList.push_back(new Inventory);
             // Back ????
+
         }
 
         Menu::start(vCommandList);

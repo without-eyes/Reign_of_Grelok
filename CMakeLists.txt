@@ -30,4 +30,8 @@ add_executable(Reign_of_Grelok userinterface/menu/main.cpp
         action/special/InvestigateGlintingObject.h
         action/special/LocationEvents.cpp
         action/special/LocationEvents.h
+        action/special/UseSwordZombie.cpp
+        action/special/UseSwordZombie.h
+        action/special/ExamineGrave.cpp
+        action/special/ExamineGrave.h
 )
