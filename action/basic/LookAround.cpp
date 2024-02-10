@@ -24,6 +24,7 @@ void LookAround::execute() {
         vText.emplace_back("A glint between the rocks catches your eye.");
 
     } else if (Player::getX() == 1 && Player::getY() == 0) {
+
         vText.emplace_back("You stand at the end of a dirt path, facing a small chapel. The");
         vText.emplace_back("stucco walls are faded, many roof tiles are missing. The great oaken");
         vText.emplace_back("doors are locked. The congregation is nowhere to be found. A small");
@@ -33,6 +34,18 @@ void LookAround::execute() {
         vText.emplace_back("A zombie totters aimlessly nearby.\n");
 
         vText.emplace_back("There is an open grave nearby.");
+
+    } else if (Player::getX() == -1 && Player::getY() == 0) {
+
+        vText.emplace_back("You are standing on a narrow stone path in a dark marsh. Greasy bubbles");
+        vText.emplace_back("float to the top of the bog-waters on either side and pop lazily,");
+        vText.emplace_back("spattering your legs with muck and slime. A short, stone tower squats");
+        vText.emplace_back("here. No door is visible, and the stones are smooth and polished. A balcony");
+        vText.emplace_back("juts out midway up the tower's face. The heady smells of incense mix with");
+        vText.emplace_back("the nauseating stench of the swamp. The stone path unfurls eastward, towards");
+        vText.emplace_back("a broad plain beyond the marshes.\n");
+
+        vText.emplace_back("A wizard is here, gesticulating wildly from his balcony.");
 
     }
 
@@ -52,6 +65,8 @@ std::string LookAround::getDescription() const {
         sLocationName = "Mountainside";
     } else if (Player::getX() == 1 && Player::getY() == 0) {
         sLocationName = "Chapel";
+    } else if (Player::getX() == -1 && Player::getY() == 0) {
+        sLocationName = "Swamp";
     }
 
     return "(" + sLocationName + ") Look Around";

@@ -9,6 +9,7 @@
 #include "../../action/special/UseSwordGrelok.h"
 #include "../../action/special/UseSwordZombie.h"
 #include "../../action/special/ExamineGrave.h"
+#include "../../action/special/TalkToTheWizard.h"
 
 int main() {
     while (true) {
@@ -30,8 +31,9 @@ int main() {
 
             vCommandList.push_back(new LookAround);
             if (LocationEvents::isLookedAround(Player::getX(), Player::getY())) {
-                if (!Inventory::hasItem("Raw Gemstone"))
+                if (!Inventory::hasItem("Raw Gemstone")) {
                     vCommandList.push_back(new InvestigateGlintingObject);
+                }
                 vCommandList.push_back(new UseSwordGrelok);
             }
             vCommandList.push_back(new GoSouth);
@@ -41,11 +43,23 @@ int main() {
         } else if (Player::getX() == 1 && Player::getY() == 0) {
 
             vCommandList.push_back(new LookAround);
-            if (!LocationEvents::isZombieKilled()) {
-                vCommandList.push_back(new UseSwordZombie);
+            if (LocationEvents::isLookedAround(Player::getX(), Player::getY())) {
+                if (!LocationEvents::isZombieKilled()) {
+                    vCommandList.push_back(new UseSwordZombie);
+                }
+                vCommandList.push_back(new ExamineGrave);
             }
-            vCommandList.push_back(new ExamineGrave);
             vCommandList.push_back(new GoWest);
+            vCommandList.push_back(new Inventory);
+            // Back ????
+
+        } else if (Player::getX() == -1 && Player::getY() == 0) {
+
+            vCommandList.push_back(new LookAround);
+            if (LocationEvents::isLookedAround(Player::getX(), Player::getY())) {
+                vCommandList.push_back(new TalkToTheWizard);
+            }
+            vCommandList.push_back(new GoEast);
             vCommandList.push_back(new Inventory);
             // Back ????
 

@@ -34,4 +34,6 @@ add_executable(Reign_of_Grelok userinterface/menu/main.cpp
         action/special/UseSwordZombie.h
         action/special/ExamineGrave.cpp
         action/special/ExamineGrave.h
+        action/special/TalkToTheWizard.cpp
+        action/special/TalkToTheWizard.h
 )
