@@ -12,5 +12,5 @@ public:
     static void writeText(const std::vector<std::string>& vText);
 
 private:
-    static void typingEffectOutput(const char* aText);
+    static void typingEffectOutput(const std::string &text);
 };

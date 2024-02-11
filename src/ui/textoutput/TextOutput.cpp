@@ -30,10 +30,9 @@ void TextOutput::placeStringOnScreen(const short sX, const short sY) {
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coordinates);
 }
 
-void TextOutput::typingEffectOutput(const char* aText) {
-    while (*aText) {
-        printf("%c\xDB", *aText++);
-        fflush(stdout);
+void TextOutput::typingEffectOutput(const std::string &text) {
+    for (char symbol: text) {
+        std::cout << symbol << std::flush;
         Sleep(5);
     }
 }
