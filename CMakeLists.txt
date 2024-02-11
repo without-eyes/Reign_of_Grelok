@@ -3,37 +3,29 @@ project(Reign_of_Grelok)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Reign_of_Grelok userinterface/menu/main.cpp
-        player/Inventory.h
-        player/Inventory.cpp
-        userinterface/menu/Menu.h
-        action/interface/Command.h
-        userinterface/menu/Menu.cpp
-        action/basic/GoNorth.h
-        action/basic/GoNorth.cpp
-        action/basic/GoSouth.h
-        action/basic/GoEast.h
-        action/basic/GoWest.h
-        action/basic/GoSouth.cpp
-        action/basic/GoEast.cpp
-        action/basic/GoWest.cpp
-        player/Player.h
-        player/Player.cpp
-        action/basic/LookAround.h
-        action/basic/LookAround.cpp
-        userinterface/textoutput/TextOutput.h
-        userinterface/textoutput/TextOutput.cpp
-        other/includes.h
-        action/special/UseSwordGrelok.cpp
-        action/special/UseSwordGrelok.h
-        action/special/InvestigateGlintingObject.cpp
-        action/special/InvestigateGlintingObject.h
-        action/special/LocationEvents.cpp
-        action/special/LocationEvents.h
-        action/special/UseSwordZombie.cpp
-        action/special/UseSwordZombie.h
-        action/special/ExamineGrave.cpp
-        action/special/ExamineGrave.h
-        action/special/TalkToTheWizard.cpp
-        action/special/TalkToTheWizard.h
+set(GAME_NAME Reign_of_Grelok)
+
+add_executable(${GAME_NAME}
+        src/ui/menu/main.cpp
+        src/player/Inventory.cpp
+        src/ui/menu/Menu.cpp
+        src/action/basic/GoNorth.cpp
+        src/action/basic/GoSouth.cpp
+        src/action/basic/GoEast.cpp
+        src/action/basic/GoWest.cpp
+        src/player/Player.cpp
+        src/action/basic/LookAround.cpp
+        src/ui/textoutput/TextOutput.cpp
+        src/action/special/UseSwordGrelok.cpp
+        src/action/special/InvestigateGlintingObject.cpp
+        src/action/special/LocationEvents.cpp
+        src/action/special/UseSwordZombie.cpp
+        src/action/special/ExamineGrave.cpp
+        src/action/special/TalkToTheWizard.cpp
+)
+
+target_include_directories(
+        ${GAME_NAME}
+        PRIVATE
+        include
 )
