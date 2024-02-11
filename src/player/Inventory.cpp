@@ -1,43 +1,69 @@
 #include <rog/player/Inventory.h>
+#include "rog/ui/menu/Menu.h"
 #include <algorithm>
 
 void Inventory::execute() {
-    Menu::start(vItems);
+    Menu::start(items);
 }
 
 std::string Inventory::getDescription() const {
     return "Inventory";
 }
 
-void Inventory::addItem(const std::string& sItemName) {
-    vItems.emplace_back(sItemName);
+void Inventory::addItem(ItemType itemType) {
+    items.emplace_back(itemType);
 }
 
-void Inventory::removeItem(const std::string& sItemName) {
-    vItems.erase(std::find(vItems.begin(), vItems.end(), sItemName));
+void Inventory::removeItem(ItemType itemType) {
+    items.erase(std::remove(items.begin(), items.end(), itemType), items.end());
 }
 
-bool Inventory::hasItem(const std::string &sItemName) {
-    return std::find(vItems.begin(), vItems.end(), sItemName) != vItems.end();
-}
-
-std::string Inventory::getItemDescription(const std::string &sItemName) {
-    if (sItemName == "Rusty Sword") {
-        return "Your weapon. Rusty, but trusty.";
-    } else if (sItemName == "Drinking Flask") {
-        return "A very small flask to carry water.";
-    } else if (sItemName == "Zombie Head") {
-        return "The smell may make you unpopular...";
-    } else if (sItemName == "Refined Gemstone") {
-        return "A brilliant, faceted gemstone";
-    } else if (sItemName == "Magical Shard") {
-        return "The gem shard pulses with magical light...";
-    } else if (sItemName == "Magic Sword") {
-        return "An enchanted weapon to defeat Grelok";
-    } else if (sItemName == "Brass Key") {
-        return "Key given to you by the priest";
-    } else if (sItemName == "Raw Gemstone") {
-        return "This gemstone may be valuable...";
+std::string Inventory::getItemName(Inventory::ItemType itemType) {
+    switch (itemType) {
+        case ItemType::RustySword:
+            return "Rusty Sword";
+        case ItemType::DrinkingFlask:
+            return "Drinking Flask";
+        case ItemType::ZombieHead:
+            return "Zombie Head";
+        case ItemType::RefinedGemstone:
+            return "Refined Gemstone";
+        case ItemType::MagicalShard:
+            return "Magical Shard";
+        case ItemType::MagicSword:
+            return "Magic Sword";
+        case ItemType::BrassKey:
+            return "Brass Key";
+        case ItemType::RawGemstone:
+            return "Raw Gemstone";
+        default:
+            return "Unknown Item";
     }
 }
 
+bool Inventory::hasItem(ItemType itemType) {
+    return std::find(items.begin(), items.end(), itemType) != items.end();
+}
+
+std::string Inventory::getItemDescription(ItemType itemType) {
+    switch (itemType) {
+        case ItemType::RustySword:
+            return "Your weapon. Rusty, but trusty.";
+        case ItemType::DrinkingFlask:
+            return "A very small flask to carry water.";
+        case ItemType::ZombieHead:
+            return "The smell may make you unpopular...";
+        case ItemType::RefinedGemstone:
+            return "A brilliant, faceted gemstone";
+        case ItemType::MagicalShard:
+            return "The gem shard pulses with magical light...";
+        case ItemType::MagicSword:
+            return "An enchanted weapon to defeat Grelok";
+        case ItemType::BrassKey:
+            return "Key given to you by the priest";
+        case ItemType::RawGemstone:
+            return "This gemstone may be valuable...";
+        default:
+            return "Unknown Item";
+    }
+}

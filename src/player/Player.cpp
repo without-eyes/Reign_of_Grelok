@@ -1,18 +1,18 @@
 #include "rog/player/Player.h"
 
-void Player::changeX(const short nValue) {
-    sX += nValue;
+void Player::changeX(const short newX) {
+    positionX += newX;
 }
 
-void Player::changeY(const short nValue) {
-    sY += nValue;
+void Player::changeY(const short newY) {
+    positionY += newY;
 }
 
 short Player::getX() {
-    return sX;
+    return positionX;
 }
 
 short Player::getY() {
-    return sY;
+    return positionY;
 }
 

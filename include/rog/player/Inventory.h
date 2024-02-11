@@ -3,18 +3,34 @@
 #include <string>
 #include <vector>
 #include "rog/action/interface/Command.h"
-#include "rog/ui/menu/Menu.h"
 
-class Inventory : public Command{
+
+class Inventory : public Command {
 public:
+    enum class ItemType {
+        RustySword,
+        DrinkingFlask,
+        ZombieHead,
+        RefinedGemstone,
+        MagicalShard,
+        MagicSword,
+        BrassKey,
+        RawGemstone
+    };
+
     void execute() override;
     std::string getDescription() const override;
 
-    static void addItem(const std::string& sItemName);
-    static void removeItem(const std::string& sItemName);
-    static bool hasItem(const std::string& sItemName);
-    static std::string getItemDescription(const std::string& sItemName);
+    static void addItem(ItemType itemType);
+
+    static void removeItem(ItemType itemType);
+
+    static std::string getItemName(ItemType itemType);
+
+    static bool hasItem(ItemType itemType);
+
+    static std::string getItemDescription(ItemType itemType);
 
 private:
-    inline static std::vector<std::string> vItems = {"Rusty Sword", "Drinking Flask"};
+    inline static std::vector<ItemType> items = {ItemType::RustySword, ItemType::DrinkingFlask};
 };

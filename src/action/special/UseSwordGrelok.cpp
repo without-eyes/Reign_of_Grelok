@@ -1,7 +1,7 @@
 #include "rog/action/special/UseSwordGrelok.h"
 
 void UseSwordGrelok::execute() {
-    if (Inventory::hasItem("Rusty Sword")) {
+    if (Inventory::hasItem(Inventory::ItemType::RustySword)) {
         Menu::setLowerText("Your puny weapons are useless on Grelok.");
     } else {
 

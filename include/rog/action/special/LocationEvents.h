@@ -2,12 +2,14 @@
 
 class LocationEvents {
 public:
-    static bool isLookedAround(int x, int y);
-    static void changeValueLookedAround(int x, int y);
-    static bool isZombieKilled();
+    static bool hasLookedAround(short positionX, short positionY);
+
+    static void changeValueLookedAround(short positionX, short positionY);
+
+    static bool hasZombieKilled();
     static void changeValueZombieKilled();
 
 private:
-    inline static bool aIsLookedAround[3][3] = {false};
-    inline static bool bIsZombieKilled = false;
+    inline static bool isLookedAround[3][3] = {false};
+    inline static bool isZombieKilled = false;
 };

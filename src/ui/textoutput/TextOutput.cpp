@@ -19,14 +19,14 @@ void TextOutput::removeBlinkingUnderscore() {
     SetConsoleCursorInfo(out, &cursorInfo);
 }
 
-void TextOutput::changeColor(const int nColor) {
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), nColor);
+void TextOutput::changeColor(const int colorNumber) {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), colorNumber);
 }
 
-void TextOutput::placeStringOnScreen(const short sX, const short sY) {
+void TextOutput::placeStringOnScreen(const short positionX, const short positionY) {
     COORD coordinates;
-    coordinates.X = sX;
-    coordinates.Y = sY;
+    coordinates.X = positionX;
+    coordinates.Y = positionY;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coordinates);
 }
 
@@ -37,33 +37,33 @@ void TextOutput::typingEffectOutput(const std::string &text) {
     }
 }
 
-void TextOutput::writeText(const std::vector<std::string>& vText) {
+void TextOutput::writeText(const std::vector<std::string> &text) {
     system("cls");
 
     TextOutput::removeBlinkingUnderscore();
 
-    bool bEnterPressed = false;
+    bool enterPressed = false;
 
-    for (const std::string& sLine : vText) {
+    for (const std::string &line: text) {
         if (_kbhit() && getch() == 13) {
-            bEnterPressed = true;
+            enterPressed = true;
             break;
         }
 
-        if (sLine != vText.back()) {
-            TextOutput::typingEffectOutput(("\n  " + sLine).c_str());
+        if (line != text.back()) {
+            TextOutput::typingEffectOutput(("\n  " + line).c_str());
         } else {
-            TextOutput::typingEffectOutput(("\n\n\n  > " + sLine).c_str());
+            TextOutput::typingEffectOutput(("\n\n\n  > " + line).c_str());
         }
     }
 
-    if (bEnterPressed) {
+    if (enterPressed) {
         system("cls");
-        for (const std::string& sLine : vText) {
-            if (sLine != vText.back()) {
-                std::cout << "\n  " + sLine;
+        for (const std::string &line: text) {
+            if (line != text.back()) {
+                std::cout << "\n  " + line;
             } else {
-                std::cout << "\n\n\n  > " + sLine;
+                std::cout << "\n\n\n  > " + line;
             }
         }
     }
@@ -75,9 +75,9 @@ void TextOutput::writeText(const std::vector<std::string>& vText) {
 
     TextOutput::removeBlinkingUnderscore();
 
-    for (const std::string& sLine : vText) {
-        if (sLine != vText.back()) {
-            std::cout << "\n  " + sLine;
+    for (const std::string &line: text) {
+        if (line != text.back()) {
+            std::cout << "\n  " + line;
         } else {
             std::cout << "\n\n\n  > ";
         }

@@ -1,17 +1,17 @@
 #include "rog/action/special/LocationEvents.h"
 
-bool LocationEvents::isLookedAround(int x, int y) {
-    return aIsLookedAround[y][x];
+bool LocationEvents::hasLookedAround(short positionX, short positionY) {
+    return isLookedAround[positionY][positionX];
 }
 
-void LocationEvents::changeValueLookedAround(int x, int y) {
-    aIsLookedAround[y][x] = true;
+void LocationEvents::changeValueLookedAround(short positionX, short positionY) {
+    isLookedAround[positionY][positionX] = true;
 }
 
-bool LocationEvents::isZombieKilled() {
-    return bIsZombieKilled;
+bool LocationEvents::hasZombieKilled() {
+    return isZombieKilled;
 }
 
 void LocationEvents::changeValueZombieKilled() {
-    bIsZombieKilled = true;
+    isZombieKilled = true;
 }

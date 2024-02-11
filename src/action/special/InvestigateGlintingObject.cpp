@@ -2,7 +2,7 @@
 
 void InvestigateGlintingObject::execute() {
     Menu::setLowerText("You take a rough gemstone from the rocks");
-    Inventory::addItem("Raw Gemstone");
+    Inventory::addItem(Inventory::ItemType::RawGemstone);
 }
 
 std::string InvestigateGlintingObject::getDescription() const {

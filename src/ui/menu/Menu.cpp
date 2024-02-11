@@ -2,13 +2,13 @@
 #include <iostream>
 #include <conio.h>
 
-void Menu::start(const std::vector<Command*>& vCommandList) {
+void Menu::start(const std::vector<Command *> &commandList) {
     system("cls");
 
-    std::vector<int> vLineColor(vCommandList.size(), 7);
-    vLineColor[0] = 10;
+    std::vector<int> lineColor(commandList.size(), 7);
+    lineColor[0] = 10;
 
-    int nUserMenuPosition = 1;
+    int userMenuPosition = 1;
     bool exitMenu = false;
 
     while (!exitMenu) {
@@ -16,94 +16,95 @@ void Menu::start(const std::vector<Command*>& vCommandList) {
 
         short sX = 3, sY = 1;
 
-        for (int i = 0; i < vCommandList.size(); i++) {
+        for (int i = 0; i < commandList.size(); i++) {
             TextOutput::placeStringOnScreen(sX, sY++);
-            TextOutput::changeColor(vLineColor[i]);
-            std::cout << "> " << vCommandList[i]->getDescription();
+            TextOutput::changeColor(lineColor[i]);
+            std::cout << "> " << commandList[i]->getDescription();
         }
 
         TextOutput::placeStringOnScreen(sX, sY + 3);
         TextOutput::changeColor(7);
-        std::cout << "> " + sLowerText;
+        std::cout << "> " + lowerText;
 
         TextOutput::addBlinkingUnderscore();
 
-        userInput(vCommandList, nUserMenuPosition, exitMenu);
+        userInput(commandList, userMenuPosition, exitMenu);
 
-        fill(vLineColor.begin(), vLineColor.end(), 7);
+        fill(lineColor.begin(), lineColor.end(), 7);
 
-        vLineColor[nUserMenuPosition - 1] = 10;
+        lineColor[userMenuPosition - 1] = 10;
     }
 }
 
-void Menu::userInput(const std::vector<Command*>& vCommandList, int& nUserMenuPosition, bool& bExitMenu) {
+void Menu::userInput(const std::vector<Command *> &commandList, int &userMenuPosition, bool &exitMenu) {
     int key = _getch();
 
-    if (key == 72 && (nUserMenuPosition >= 2 && nUserMenuPosition <= vCommandList.size())) {
-        nUserMenuPosition--;
-    } else if (key == 80 && (nUserMenuPosition >= 1 && nUserMenuPosition <= vCommandList.size() - 1)) {
-        nUserMenuPosition++;
+    if (key == 72 && (userMenuPosition >= 2 && userMenuPosition <= commandList.size())) {
+        userMenuPosition--;
+    } else if (key == 80 && (userMenuPosition >= 1 && userMenuPosition <= commandList.size() - 1)) {
+        userMenuPosition++;
     } else if (key == '\r') {
-        vCommandList[nUserMenuPosition - 1]->execute();
-        bExitMenu = true;
+        commandList[userMenuPosition - 1]->execute();
+        exitMenu = true;
     }
 }
 
-void Menu::start(const std::vector<std::string> &vItems) {
+void Menu::start(const std::vector<Inventory::ItemType> &items) {
     system("cls");
 
-    int nMenuSize = vItems.size() + 1;
-    std::vector<int> vLineColor(nMenuSize, 7);
-    vLineColor[0] = 10;
+    int menuSize = items.size() + 1;
+    std::vector<int> lineColor(menuSize, 7);
+    lineColor[0] = 10;
 
-    sLowerText = "";
-    int nUserInventoryPosition = 1;
-    bool bExitInventory = false;
+    lowerText = "";
+    int userInventoryPosition = 1;
+    bool exitInventory = false;
 
-    while (!bExitInventory) {
+    while (!exitInventory) {
         TextOutput::removeBlinkingUnderscore();
 
         short sX = 3, sY = 1;
 
-        for (int i = 0; i < vItems.size(); i++) {
+        for (int i = 0; i < items.size(); i++) {
             TextOutput::placeStringOnScreen(sX, sY++);
-            TextOutput::changeColor(vLineColor[i]);
-            std::cout << "> " << vItems[i];
+            TextOutput::changeColor(lineColor[i]);
+            std::cout << "> " << Inventory::getItemName(items[i]);
         }
         TextOutput::placeStringOnScreen(sX, sY++);
-        TextOutput::changeColor(vLineColor[vItems.size()]);
+        TextOutput::changeColor(lineColor[items.size()]);
         std::cout << "> Back";
 
         TextOutput::placeStringOnScreen(sX, sY + 3);
         TextOutput::changeColor(7);
-        std::cout << "> " + sLowerText;
+        std::cout << "> " + lowerText;
 
         TextOutput::addBlinkingUnderscore();
 
-        userInput(vItems, nMenuSize, nUserInventoryPosition, bExitInventory, sLowerText);
+        userInput(items, userInventoryPosition, exitInventory);
 
-        fill(vLineColor.begin(), vLineColor.end(), 7);
+        fill(lineColor.begin(), lineColor.end(), 7);
 
-        vLineColor[nUserInventoryPosition - 1] = 10;
+        lineColor[userInventoryPosition - 1] = 10;
     }
 }
 
-void Menu::userInput(const std::vector<std::string> &vItems, int nMenuSize, int &nUserInventoryPosition, bool &bExitInventory, std::string& sItemDescription) {
+void Menu::userInput(const std::vector<Inventory::ItemType> &items, int &userInventoryPosition, bool &exitInventory) {
     int key = _getch();
 
-    if (key == 72 && (nUserInventoryPosition >= 2 && nUserInventoryPosition <= nMenuSize)) {
-        nUserInventoryPosition--;
-    } else if (key == 80 && (nUserInventoryPosition >= 1 && nUserInventoryPosition <= vItems.size())) {
-        nUserInventoryPosition++;
+    int menuSize = items.size() + 1;
+    if (key == 72 && (userInventoryPosition >= 2 && userInventoryPosition <= menuSize)) {
+        userInventoryPosition--;
+    } else if (key == 80 && (userInventoryPosition >= 1 && userInventoryPosition <= items.size())) {
+        userInventoryPosition++;
     } else if (key == '\r') {
-        if (nUserInventoryPosition == nMenuSize) {
-            bExitInventory = true;
+        if (userInventoryPosition == menuSize) {
+            exitInventory = true;
         } else {
-            sItemDescription = Inventory::getItemDescription(vItems[nUserInventoryPosition - 1]);
+            lowerText = Inventory::getItemDescription(items[userInventoryPosition - 1]);
         }
     }
 }
 
-void Menu::setLowerText(const std::string &sText) {
-    sLowerText = sText;
+void Menu::setLowerText(const std::string &text) {
+    lowerText = text;
 }
