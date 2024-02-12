@@ -1,11 +1,20 @@
 #pragma once
 
 #include "rog/action/interface/Command.h"
-#include "rog/ui/textoutput/TextOutput.h"
-#include "rog/action/special/LocationEvents.h"
 
 class LookAround : public Command {
 public:
+    enum class LocationType {
+        Plains,
+        Mountainside,
+        Chapel,
+        Swamp,
+        Town,
+    };
+
     void execute() override;
     std::string getDescription() const override;
+
+private:
+    static LocationType getLocationType();
 };
