@@ -1,4 +1,4 @@
-#include "rog/action/basic/GoWest.h"
+#include <rog/action/basic/GoWest.h>
 
 void GoWest::execute() {
     Player::changeX(-1);

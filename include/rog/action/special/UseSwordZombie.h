@@ -1,8 +1,6 @@
 #pragma once
 
-#include "rog/action/interface/Command.h"
-#include "rog/ui/menu/Menu.h"
-#include "LocationEvents.h"
+#include <rog/action/interface/Command.h>
 
 class UseSwordZombie : public Command {
 public:

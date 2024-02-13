@@ -1,4 +1,4 @@
-#include "rog/player/Player.h"
+#include <rog/player/Player.h>
 
 void Player::changeX(const short newX) {
     positionX += newX;

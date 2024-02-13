@@ -1,5 +1,7 @@
-#include "rog/action/special/TalkToTheWizard.h"
-#include "rog/ui/textoutput/TextOutput.h"
+#include <rog/action/special/TalkToTheWizard.h>
+
+#include <rog/player/Inventory.h>
+#include <rog/ui/textoutput/TextOutput.h>
 
 void TalkToTheWizard::execute() {
     std::vector<std::string> text;

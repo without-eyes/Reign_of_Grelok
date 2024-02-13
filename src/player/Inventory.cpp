@@ -1,5 +1,6 @@
 #include <rog/player/Inventory.h>
-#include "rog/ui/menu/Menu.h"
+
+#include <rog/ui/menu/Menu.h>
 #include <algorithm>
 
 void Inventory::execute() {

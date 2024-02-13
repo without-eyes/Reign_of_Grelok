@@ -1,6 +1,6 @@
 #pragma once
 
-#include "rog/action/interface/Command.h"
+#include <rog/action/interface/Command.h>
 
 class GoSouth : public Command {
 public:

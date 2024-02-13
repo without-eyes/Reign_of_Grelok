@@ -1,9 +1,6 @@
 #pragma once
 
-#include "rog/action/interface/Command.h"
-#include "rog/ui/textoutput/TextOutput.h"
-#include "rog/player/Inventory.h"
-#include "LocationEvents.h"
+#include <rog/action/interface/Command.h>
 
 class ExamineGrave : public Command {
 public:

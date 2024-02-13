@@ -1,7 +1,6 @@
 #pragma once
 
-#include "rog/action/interface/Command.h"
-#include "rog/player/Inventory.h"
+#include <rog/action/interface/Command.h>
 
 class TalkToTheWizard : public Command {
 public:

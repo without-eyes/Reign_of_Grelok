@@ -1,4 +1,4 @@
-#include "rog/action/special/LocationEvents.h"
+#include <rog/action/special/LocationEvents.h>
 
 bool LocationEvents::hasLookedAround(short positionX, short positionY) {
     return isLookedAround[positionY][positionX];

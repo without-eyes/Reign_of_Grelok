@@ -1,4 +1,6 @@
-#include "rog/action/special/InvestigateGlintingObject.h"
+#include <rog/action/special/InvestigateGlintingObject.h>
+
+#include <rog/ui/menu/Menu.h>
 
 void InvestigateGlintingObject::execute() {
     Menu::setLowerText("You take a rough gemstone from the rocks");

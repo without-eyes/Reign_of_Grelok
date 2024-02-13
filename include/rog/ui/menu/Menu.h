@@ -1,8 +1,7 @@
 #pragma once
 
-#include "rog/ui/textoutput/TextOutput.h"
-#include "rog/action/interface/Command.h"
-#include "rog/player/Inventory.h"
+#include <rog/action/interface/Command.h>
+#include <rog/player/Inventory.h>
 
 class Menu {
 public:

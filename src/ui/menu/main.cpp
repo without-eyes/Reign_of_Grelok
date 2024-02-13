@@ -1,17 +1,17 @@
 #include <windows.h>
-#include "rog/ui/menu/Menu.h"
-#include "rog/action/basic/LookAround.h"
-#include "rog/action/basic/GoNorth.h"
-#include "rog/action/basic/GoSouth.h"
-#include "rog/action/basic/GoEast.h"
-#include "rog/action/basic/GoWest.h"
-#include "rog/player/Inventory.h"
-#include "rog/action/special/LocationEvents.h"
-#include "rog/action/special/InvestigateGlintingObject.h"
-#include "rog/action/special/UseSwordGrelok.h"
-#include "rog/action/special/UseSwordZombie.h"
-#include "rog/action/special/ExamineGrave.h"
-#include "rog/action/special/TalkToTheWizard.h"
+#include <rog/ui/menu/Menu.h>
+#include <rog/action/basic/LookAround.h>
+#include <rog/action/basic/GoNorth.h>
+#include <rog/action/basic/GoSouth.h>
+#include <rog/action/basic/GoEast.h>
+#include <rog/action/basic/GoWest.h>
+#include <rog/player/Inventory.h>
+#include <rog/action/special/LocationEvents.h>
+#include <rog/action/special/InvestigateGlintingObject.h>
+#include <rog/action/special/UseSwordGrelok.h>
+#include <rog/action/special/UseSwordZombie.h>
+#include <rog/action/special/ExamineGrave.h>
+#include <rog/action/special/TalkToTheWizard.h>
 
 int main() {
     while (true) {

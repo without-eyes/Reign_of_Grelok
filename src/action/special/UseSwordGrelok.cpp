@@ -1,4 +1,6 @@
-#include "rog/action/special/UseSwordGrelok.h"
+#include <rog/action/special/UseSwordGrelok.h>
+
+#include <rog/ui/menu/Menu.h>
 
 void UseSwordGrelok::execute() {
     if (Inventory::hasItem(Inventory::ItemType::RustySword)) {

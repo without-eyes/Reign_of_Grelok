@@ -1,4 +1,8 @@
-#include "rog/action/special/ExamineGrave.h"
+#include <rog/action/special/ExamineGrave.h>
+
+#include <rog/ui/textoutput/TextOutput.h>
+#include <rog/player/Inventory.h>
+#include <rog/action/special/LocationEvents.h>
 
 void ExamineGrave::execute() {
     std::vector<std::string> text;

@@ -2,8 +2,7 @@
 
 #include <string>
 #include <vector>
-#include "rog/action/interface/Command.h"
-
+#include <rog/action/interface/Command.h>
 
 class Inventory : public Command {
 public:
