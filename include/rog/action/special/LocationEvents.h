@@ -9,7 +9,12 @@ public:
     static bool hasZombieKilled();
     static void changeValueZombieKilled();
 
+    static bool hasSpokenToWizard();
+
+    static void changeValueSpokeToWizard();
+
 private:
     inline static bool isLookedAround[3][3] = {false};
     inline static bool isZombieKilled = false;
+    inline static bool spokeToWizard = false;
 };

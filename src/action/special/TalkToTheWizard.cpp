@@ -2,11 +2,12 @@
 
 #include <rog/player/Inventory.h>
 #include <rog/ui/textoutput/TextOutput.h>
+#include <rog/action/special/LocationEvents.h>
 
 void TalkToTheWizard::execute() {
     std::vector<std::string> text;
 
-    if (!Inventory::hasItem(Inventory::ItemType::RawGemstone)) {
+    if (!Inventory::hasItem(Inventory::ItemType::RawGemstone) && !LocationEvents::hasSpokenToWizard()) {
 
         text.emplace_back("The wizard beckons wildly at you from his balcony. \"You're here,");
         text.emplace_back("you've arrived!\", he exclaims. After an awkward silence, he jabs");
@@ -21,7 +22,17 @@ void TalkToTheWizard::execute() {
         text.emplace_back("Come back when you've got a powerful gemstone. Soon - I've never got");
         text.emplace_back("to fulfill a prophecy before!\"");
 
-    } else {
+        LocationEvents::changeValueSpokeToWizard();
+
+    } else if (!Inventory::hasItem(Inventory::ItemType::RawGemstone) && LocationEvents::hasSpokenToWizard()) {
+
+        text.emplace_back("The wizard is shooing you away, his sleeves flopping about.\n");
+
+        text.emplace_back("\"Go! Find the gemstone and return, so I can play my part!\"");
+
+        LocationEvents::changeValueSpokeToWizard();
+
+    } else if (Inventory::hasItem(Inventory::ItemType::RawGemstone) && !LocationEvents::hasSpokenToWizard()) {
 
         text.emplace_back("\"Hoo-hoo! The slayer of Grelok approaches, raw stone in hand, just");
         text.emplace_back("as I've seen!\" The wizard's pointy hat bobs excitedly as he points");
@@ -38,6 +49,18 @@ void TalkToTheWizard::execute() {
         text.emplace_back("heart for you. Take the chaff, too. You'll need payment for a smith to");
         text.emplace_back("forge the weapon.\" He tosses the stones down which you leap forward to");
         text.emplace_back("catch safely.");
+
+        Inventory::removeItem(Inventory::ItemType::RawGemstone);
+        Inventory::addItem(Inventory::ItemType::MagicalShard);
+
+        LocationEvents::changeValueSpokeToWizard();
+
+    } else if (Inventory::hasItem(Inventory::ItemType::MagicalShard) && LocationEvents::hasSpokenToWizard()) {
+
+        text.emplace_back("\"Get you to a smithy! Forge the shard with sword, and defeat Grelok!\"\n");
+
+        text.emplace_back("The wizard tosses some pebbles down to shoo you away and busies himself conjuring");
+        text.emplace_back("colored puffs of smoke.");
 
     }
 

@@ -13,5 +13,13 @@ bool LocationEvents::hasZombieKilled() {
 }
 
 void LocationEvents::changeValueZombieKilled() {
-    isZombieKilled = true;
+    isZombieKilled = !isZombieKilled;
+}
+
+bool LocationEvents::hasSpokenToWizard() {
+    return spokeToWizard;
+}
+
+void LocationEvents::changeValueSpokeToWizard() {
+    spokeToWizard = !spokeToWizard;
 }

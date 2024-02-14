@@ -22,6 +22,10 @@ add_executable(${GAME_NAME}
         src/action/special/UseSwordZombie.cpp
         src/action/special/ExamineGrave.cpp
         src/action/special/TalkToTheWizard.cpp
+        src/action/special/SpeakWithBlacksmith.cpp
+        include/rog/action/special/SpeakWithBlacksmith.h
+        src/action/special/SpeakWithPriest.cpp
+        include/rog/action/special/SpeakWithPriest.h
 )
 
 target_include_directories(

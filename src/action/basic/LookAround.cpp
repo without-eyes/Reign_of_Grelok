@@ -29,7 +29,15 @@ void LookAround::execute() {
             break;
 
         case LocationType::Town:
-            // Finish
+            text.emplace_back("You're standing in the dusty market square of a quiet town. Many of");
+            text.emplace_back("the shops and homes lie abandoned, and the citizens that can be seen");
+            text.emplace_back("speak in hushed voices, casting furtive glances at the darkened skyline");
+            text.emplace_back("in the distant north. The ringing of an anvil breaks the silence regularly,");
+            text.emplace_back("where a mustachioed blacksmith bends over his work in a nearby tent.\n");
+
+            text.emplace_back("The blacksmith is here, working.\n");
+
+            text.emplace_back("A priest is here, drinking.");
             break;
 
         case LocationType::Chapel:
