@@ -12,15 +12,21 @@ void ExamineGrave::execute() {
         text.emplace_back("There is a deep, empty grave in the cemetery. Several bloated rats");
         text.emplace_back("floating in a foot of filthy water at the bottom. Don't fall in!");
 
-    } else {
+    } else if (!LocationEvents::hasExaminedGrave() && !Inventory::hasItem(Inventory::ItemType::ZombieHead)) {
 
-        text.emplace_back("There is a deep, empty grave in the cemetery. Several bloated rats");
-        text.emplace_back("floating in a foot of filthy water at the bottom. Don't fall in!\n");
+        text.emplace_back("There is a deep, empty grave in the cemetery. Several bloated rats and a");
+        text.emplace_back("zombie corpse float in a foot of filthy water at the bottom. Don't fall in!\n");
 
         text.emplace_back("A grotesque zombie head is stuck on a root near the top of the grave.");
         text.emplace_back("You bag the horrific trophy as proof of your deed.");
 
         Inventory::addItem(Inventory::ItemType::ZombieHead);
+        LocationEvents::changeValueExaminedGrave();
+
+    } else {
+
+        text.emplace_back("There is a deep, empty grave in the cemetery. Several bloated rats and a");
+        text.emplace_back("zombie corpse float in a foot of filthy water at the bottom. Don't fall in!");
 
     }
 

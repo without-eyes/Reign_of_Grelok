@@ -16,10 +16,34 @@ void LocationEvents::changeValueZombieKilled() {
     isZombieKilled = !isZombieKilled;
 }
 
+bool LocationEvents::hasExaminedGrave() {
+    return examinedGrave;
+}
+
+void LocationEvents::changeValueExaminedGrave() {
+    examinedGrave = !examinedGrave;
+}
+
 bool LocationEvents::hasSpokenToWizard() {
     return spokeToWizard;
 }
 
 void LocationEvents::changeValueSpokeToWizard() {
     spokeToWizard = !spokeToWizard;
+}
+
+bool LocationEvents::hasUnlockedChapel() {
+    return unlockedChapel;
+}
+
+void LocationEvents::changeValueUnlockedChapel() {
+    unlockedChapel = !unlockedChapel;
+}
+
+bool LocationEvents::hasFilledFlask() {
+    return filledFlask;
+}
+
+void LocationEvents::changeValueFilledFlask() {
+    filledFlask = !filledFlask;
 }

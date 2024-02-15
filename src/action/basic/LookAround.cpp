@@ -2,6 +2,7 @@
 
 #include <rog/ui/textoutput/TextOutput.h>
 #include <rog/action/special/LocationEvents.h>
+#include <rog/player/Inventory.h>
 
 void LookAround::execute() {
     std::vector<std::string> text;
@@ -47,7 +48,14 @@ void LookAround::execute() {
             text.emplace_back("cemetery of crooked headstones lies in the shadow of the cracked steeple.");
             text.emplace_back("The dirt path winds westward through a great, featureless plain.\n");
 
-            text.emplace_back("A zombie totters aimlessly nearby.\n");
+            if (!LocationEvents::hasZombieKilled()) {
+                text.emplace_back("A zombie totters aimlessly nearby.\n");
+            }
+
+            if (Inventory::hasItem(Inventory::ItemType::BrassKey)) {
+                text.emplace_back("The chapel doors are unlocked.");
+                LocationEvents::changeValueUnlockedChapel();
+            }
 
             text.emplace_back("There is an open grave nearby.");
             break;

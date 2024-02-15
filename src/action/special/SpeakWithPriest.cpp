@@ -37,6 +37,16 @@ void SpeakWithPriest::execute() {
         Inventory::removeItem(Inventory::ItemType::ZombieHead);
         Inventory::addItem(Inventory::ItemType::BrassKey);
 
+    } else {
+
+        text.emplace_back("The priest is drinking water, poring over a thick, leatherbound volume");
+        text.emplace_back("connected by a thick leather thong to his neck. He notices you only when");
+        text.emplace_back("you've come very close.\n");
+
+        text.emplace_back("\"Ah, good friend! Have you gone ahead to open the chapel? My body still");
+        text.emplace_back("aches with drink, I'm afraid, but soon I will gather the congregation and");
+        text.emplace_back("return myself.\"");
+
     }
 
     text.emplace_back("You approach the clergyman...");

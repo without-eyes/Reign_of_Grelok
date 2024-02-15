@@ -1,6 +1,7 @@
 #include <rog/player/Inventory.h>
 
 #include <rog/ui/menu/Menu.h>
+#include <rog/action/special/LocationEvents.h>
 #include <algorithm>
 
 void Inventory::execute() {
@@ -51,7 +52,11 @@ std::string Inventory::getItemDescription(ItemType itemType) {
         case ItemType::RustySword:
             return "Your weapon. Rusty, but trusty.";
         case ItemType::DrinkingFlask:
-            return "A very small flask to carry water.";
+            if (LocationEvents::hasFilledFlask()) {
+                return "Your flask is full of blessed water.";
+            } else {
+                return "A very small flask to carry water.";
+            }
         case ItemType::ZombieHead:
             return "The smell may make you unpopular...";
         case ItemType::RefinedGemstone:
@@ -64,7 +69,5 @@ std::string Inventory::getItemDescription(ItemType itemType) {
             return "Key given to you by the priest";
         case ItemType::RawGemstone:
             return "This gemstone may be valuable...";
-        default:
-            return "Unknown Item";
     }
 }

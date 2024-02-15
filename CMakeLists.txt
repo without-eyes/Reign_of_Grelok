@@ -26,6 +26,12 @@ add_executable(${GAME_NAME}
         include/rog/action/special/SpeakWithBlacksmith.h
         src/action/special/SpeakWithPriest.cpp
         include/rog/action/special/SpeakWithPriest.h
+        src/action/special/ExamineChapel.cpp
+        include/rog/action/special/ExamineChapel.h
+        src/action/special/UseMagicalSwordGrelok.cpp
+        include/rog/action/special/UseMagicalSwordGrelok.h
+        src/action/basic/Back.cpp
+        include/rog/action/basic/Back.h
 )
 
 target_include_directories(
