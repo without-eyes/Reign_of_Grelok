@@ -1,6 +1,5 @@
 #include <rog/ui/textoutput/TextOutput.h>
 
-#include <windows.h>
 #include <conio.h>
 #include <iostream>
 
@@ -20,19 +19,20 @@ void TextOutput::removeBlinkingUnderscore() {
     SetConsoleCursorInfo(out, &cursorInfo);
 }
 
-void TextOutput::changeColor(const int colorNumber) {
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), colorNumber);
+void TextOutput::changeColor(WORD color) {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
 void TextOutput::placeStringOnScreen(const short positionX, const short positionY) {
     COORD coordinates;
     coordinates.X = positionX;
     coordinates.Y = positionY;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coordinates);
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coordinates);
 }
 
 void TextOutput::typingEffectOutput(const std::string &text) {
     for (char symbol: text) {
+        mciSendString("play ..\\other\\sounds\\ui_hacking_charscroll.wav", NULL, 0, NULL);
         std::cout << symbol << std::flush;
         Sleep(5);
     }

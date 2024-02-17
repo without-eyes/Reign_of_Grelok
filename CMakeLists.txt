@@ -39,3 +39,5 @@ target_include_directories(
         PRIVATE
         include
 )
+
+target_link_libraries(Reign_of_Grelok PRIVATE winmm)

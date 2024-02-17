@@ -24,7 +24,8 @@ void TalkToTheWizard::execute() {
 
         LocationEvents::changeValueSpokeToWizard();
 
-    } else if (!Inventory::hasItem(Inventory::ItemType::RawGemstone) && LocationEvents::hasSpokenToWizard()) {
+    } else if (!Inventory::hasItem(Inventory::ItemType::RawGemstone) &&
+               !Inventory::hasItem(Inventory::ItemType::MagicalShard) && LocationEvents::hasSpokenToWizard()) {
 
         text.emplace_back("The wizard is shooing you away, his sleeves flopping about.\n");
 
@@ -59,8 +60,8 @@ void TalkToTheWizard::execute() {
 
         text.emplace_back("\"Get you to a smithy! Forge the shard with sword, and defeat Grelok!\"\n");
 
-        text.emplace_back("The wizard tosses some pebbles down to shoo you away and busies himself conjuring");
-        text.emplace_back("colored puffs of smoke.");
+        text.emplace_back("The wizard tosses some pebbles down to shoo you away and busies himself");
+        text.emplace_back("conjuring colored puffs of smoke.");
 
     }
 

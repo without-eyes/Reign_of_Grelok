@@ -7,6 +7,7 @@ public:
     static void changeY(short newY);
 
     static short getX();
+
     static short getY();
 
 private:

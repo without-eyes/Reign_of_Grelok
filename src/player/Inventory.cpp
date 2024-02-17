@@ -14,6 +14,10 @@ std::string Inventory::getDescription() const {
 
 void Inventory::addItem(ItemType itemType) {
     items.emplace_back(itemType);
+    std::sort(items.begin(), items.end(),
+              [](const ItemType &first, const ItemType &second) {
+                  return static_cast<int>(first) < static_cast<int>(second);
+              });
 }
 
 void Inventory::removeItem(ItemType itemType) {

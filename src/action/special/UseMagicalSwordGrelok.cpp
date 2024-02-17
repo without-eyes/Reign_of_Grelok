@@ -4,6 +4,8 @@
 #include <vector>
 
 void UseMagicalSwordGrelok::execute() {
+    mciSendString("play ..\\other\\sounds\\ui_hacking_passgood.wav", NULL, 0, NULL);
+
     std::vector<std::string> text;
 
     text.emplace_back("When you draw your sword, Grelok lowers his great horned head and bellows");
@@ -16,10 +18,10 @@ void UseMagicalSwordGrelok::execute() {
     text.emplace_back("still for a moment, then starts clawing at his neck. Muffled, a ringing can be");
     text.emplace_back("heard as if from a great distance.\n");
 
-    text.emplace_back("Suddenly, Grelok's chest bursts in a fount of viscous, green blood. The Ringing");
-    text.emplace_back("can be heard clearly now, and as thick lifeblood oozes around the protruding tip");
-    text.emplace_back("of the magic sword, the stormclouds swirling the peak are already clearing. Grelok");
-    text.emplace_back("is defeated!\n");
+    text.emplace_back("Suddenly, Grelok's chest bursts in a fount of viscous, green blood. The");
+    text.emplace_back("Ringing can be heard clearly now, and as thick lifeblood oozes around the");
+    text.emplace_back("protruding tip of the magic sword, the stormclouds swirling the peak are already");
+    text.emplace_back("clearing. Grelok is defeated!\n");
 
     text.emplace_back("        THE END\n");
     text.emplace_back("        (Thanks for playing!)");

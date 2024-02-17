@@ -3,11 +3,7 @@
 #include <rog/ui/menu/Menu.h>
 
 void UseSwordGrelok::execute() {
-    if (Inventory::hasItem(Inventory::ItemType::RustySword)) {
-        Menu::setLowerText("Your puny weapons are useless on Grelok.");
-    } else {
-
-    }
+    Menu::setLowerText("Your puny weapons are useless on Grelok.");
 }
 
 std::string UseSwordGrelok::getDescription() const {

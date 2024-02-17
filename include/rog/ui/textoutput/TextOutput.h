@@ -2,13 +2,15 @@
 
 #include <vector>
 #include <string>
+#include <windows.h>
 
 class TextOutput {
 public:
     static void addBlinkingUnderscore();
+
     static void removeBlinkingUnderscore();
 
-    static void changeColor(int colorNumber);
+    static void changeColor(WORD color);
 
     static void placeStringOnScreen(short positionX, short positionY);
 

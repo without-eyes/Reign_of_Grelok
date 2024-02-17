@@ -1,6 +1,7 @@
 #include <rog/action/special/ExamineChapel.h>
 
 #include <rog/ui/textoutput/TextOutput.h>
+#include <rog/action/special/LocationEvents.h>
 #include <vector>
 
 void ExamineChapel::execute() {
@@ -16,6 +17,7 @@ void ExamineChapel::execute() {
     text.emplace_back("You step into the empty chapel...");
 
     TextOutput::writeText(text);
+    LocationEvents::changeValueFilledFlask();
 }
 
 std::string ExamineChapel::getDescription() const {

@@ -18,6 +18,7 @@
 #include <rog/action/special/SpeakWithPriest.h>
 #include <rog/action/special/ExamineChapel.h>
 #include <rog/action/special/UseMagicalSwordGrelok.h>
+#include "rog/ui/textoutput/TextOutput.h"
 
 int main() {
     while (true) {
@@ -39,18 +40,16 @@ int main() {
 
             commandList.push_back(new LookAround);
             if (LocationEvents::hasLookedAround(Player::getX(), Player::getY())) {
-                if (!Inventory::hasItem(Inventory::ItemType::RawGemstone) &&
-                    !Inventory::hasItem(Inventory::ItemType::MagicalShard) &&
-                    !Inventory::hasItem(Inventory::ItemType::MagicSword)) {
-                    commandList.push_back(new InvestigateGlintingObject);
-                }
-
                 if (Inventory::hasItem(Inventory::ItemType::RustySword)) {
                     commandList.push_back(new UseSwordGrelok);
-                } else if (Inventory::hasItem(Inventory::ItemType::MagicSword)) {
+                } else if (Inventory::hasItem(Inventory::ItemType::MagicSword) &&
+                           LocationEvents::hasFilledFlask()) {
                     commandList.push_back(new UseMagicalSwordGrelok);
                 }
 
+                if (!LocationEvents::hasFoundRawGemstone()) {
+                    commandList.push_back(new InvestigateGlintingObject);
+                }
             }
             commandList.push_back(new GoSouth);
             commandList.push_back(new Inventory);
@@ -66,7 +65,9 @@ int main() {
 
                 if (LocationEvents::hasUnlockedChapel()) {
                     commandList.push_back(new ExamineChapel);
-                } else {
+                }
+
+                if (!Inventory::hasItem(Inventory::ItemType::BrassKey) || !LocationEvents::hasUnlockedChapel()) {
                     commandList.push_back(new ExamineGrave);
                 }
 

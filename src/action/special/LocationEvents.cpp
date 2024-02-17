@@ -8,6 +8,15 @@ void LocationEvents::changeValueLookedAround(short positionX, short positionY) {
     isLookedAround[positionY][positionX] = true;
 }
 
+bool LocationEvents::hasFoundRawGemstone() {
+    return foundRawGemstone;
+}
+
+void LocationEvents::changeValueFoundRawGemstone() {
+    foundRawGemstone = !foundRawGemstone;
+}
+
+
 bool LocationEvents::hasZombieKilled() {
     return isZombieKilled;
 }

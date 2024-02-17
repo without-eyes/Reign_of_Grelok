@@ -3,6 +3,7 @@
 #include <rog/ui/textoutput/TextOutput.h>
 #include <rog/action/special/LocationEvents.h>
 #include <rog/player/Inventory.h>
+#include <rog/player/Player.h>
 
 void LookAround::execute() {
     std::vector<std::string> text;
@@ -26,7 +27,9 @@ void LookAround::execute() {
 
             text.emplace_back("Grelok is here, spewing heresies.\n");
 
-            text.emplace_back("A glint between the rocks catches your eye.");
+            if (!LocationEvents::hasFoundRawGemstone()) {
+                text.emplace_back("A glint between the rocks catches your eye.");
+            }
             break;
 
         case LocationType::Town:
@@ -53,7 +56,7 @@ void LookAround::execute() {
             }
 
             if (Inventory::hasItem(Inventory::ItemType::BrassKey)) {
-                text.emplace_back("The chapel doors are unlocked.");
+                text.emplace_back("The chapel doors are unlocked.\n");
                 LocationEvents::changeValueUnlockedChapel();
             }
 
