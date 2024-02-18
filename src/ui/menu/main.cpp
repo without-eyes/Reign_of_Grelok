@@ -1,4 +1,3 @@
-#include <windows.h>
 #include <rog/ui/menu/Menu.h>
 #include <rog/player/Player.h>
 #include <rog/action/basic/LookAround.h>
@@ -18,7 +17,8 @@
 #include <rog/action/special/SpeakWithPriest.h>
 #include <rog/action/special/ExamineChapel.h>
 #include <rog/action/special/UseMagicalSwordGrelok.h>
-#include "rog/ui/textoutput/TextOutput.h"
+#include <rog/action/special/GameOver.h>
+#include <windows.h>
 
 int main() {
     while (true) {
@@ -26,77 +26,83 @@ int main() {
 
         std::vector<Command *> commandList;
 
-        if (Player::getX() == 0 && Player::getY() == 0) { // MIDDLE
+        if (!LocationEvents::hasKilledGrelok()) {
+            if (Player::getX() == 0 && Player::getY() == 0) { // MIDDLE
 
-            commandList.push_back(new LookAround);
-            commandList.push_back(new GoNorth);
-            commandList.push_back(new GoSouth);
-            commandList.push_back(new GoEast);
-            commandList.push_back(new GoWest);
-            commandList.push_back(new Inventory);
+                commandList.push_back(new LookAround);
+                commandList.push_back(new GoNorth);
+                commandList.push_back(new GoSouth);
+                commandList.push_back(new GoEast);
+                commandList.push_back(new GoWest);
+                commandList.push_back(new Inventory);
 
-        } else if (Player::getX() == 0 && Player::getY() == 1) { // NORTH
-            SetConsoleTitle("Reign of Grelok (beta v.632) - Grelok is here, spewing heresies.");
+            } else if (Player::getX() == 0 && Player::getY() == 1) { // NORTH
+                SetConsoleTitle("Reign of Grelok (beta v.632) - Grelok is here, spewing heresies.");
 
-            commandList.push_back(new LookAround);
-            if (LocationEvents::hasLookedAround(Player::getX(), Player::getY())) {
-                if (Inventory::hasItem(Inventory::ItemType::RustySword)) {
-                    commandList.push_back(new UseSwordGrelok);
-                } else if (Inventory::hasItem(Inventory::ItemType::MagicSword) &&
-                           LocationEvents::hasFilledFlask()) {
-                    commandList.push_back(new UseMagicalSwordGrelok);
+                commandList.push_back(new LookAround);
+                if (LocationEvents::hasLookedAround(Player::getX(), Player::getY())) {
+                    if (Inventory::hasItem(Inventory::ItemType::RustySword)) {
+                        commandList.push_back(new UseSwordGrelok);
+                    } else if (Inventory::hasItem(Inventory::ItemType::MagicSword) &&
+                               LocationEvents::hasFilledFlask()) {
+                        commandList.push_back(new UseMagicalSwordGrelok);
+                    }
+
+                    if (!LocationEvents::hasFoundRawGemstone()) {
+                        commandList.push_back(new InvestigateGlintingObject);
+                    }
                 }
+                commandList.push_back(new GoSouth);
+                commandList.push_back(new Inventory);
+                commandList.push_back(new Back);
 
-                if (!LocationEvents::hasFoundRawGemstone()) {
-                    commandList.push_back(new InvestigateGlintingObject);
+            } else if (Player::getX() == 1 && Player::getY() == 0) { // EAST
+
+                commandList.push_back(new LookAround);
+                if (LocationEvents::hasLookedAround(Player::getX(), Player::getY())) {
+                    if (!LocationEvents::hasZombieKilled()) {
+                        commandList.push_back(new UseSwordZombie);
+                    }
+
+                    if (LocationEvents::hasUnlockedChapel()) {
+                        commandList.push_back(new ExamineChapel);
+                    } else if (!Inventory::hasItem(Inventory::ItemType::BrassKey)) {
+                        commandList.push_back(new ExamineGrave);
+                    }
+
+
                 }
+                commandList.push_back(new GoWest);
+                commandList.push_back(new Inventory);
+                commandList.push_back(new Back);
+
+            } else if (Player::getX() == -1 && Player::getY() == 0) { // WEST
+
+                commandList.push_back(new LookAround);
+                if (LocationEvents::hasLookedAround(Player::getX(), Player::getY())) {
+                    commandList.push_back(new TalkToTheWizard);
+                }
+                commandList.push_back(new GoEast);
+                commandList.push_back(new Inventory);
+                commandList.push_back(new Back);
+
+            } else if (Player::getX() == 0 && Player::getY() == -1) { // SOUTH
+
+                commandList.push_back(new LookAround);
+                if (LocationEvents::hasLookedAround(Player::getX(), Player::getY())) {
+                    commandList.push_back(new SpeakWithBlacksmith);
+                    commandList.push_back(new SpeakWithPriest);
+                }
+                commandList.push_back(new GoNorth);
+                commandList.push_back(new Inventory);
+                commandList.push_back(new Back);
+
             }
-            commandList.push_back(new GoSouth);
-            commandList.push_back(new Inventory);
-            commandList.push_back(new Back);
-
-        } else if (Player::getX() == 1 && Player::getY() == 0) { // EAST
-
-            commandList.push_back(new LookAround);
-            if (LocationEvents::hasLookedAround(Player::getX(), Player::getY())) {
-                if (!LocationEvents::hasZombieKilled()) {
-                    commandList.push_back(new UseSwordZombie);
-                }
-
-                if (LocationEvents::hasUnlockedChapel()) {
-                    commandList.push_back(new ExamineChapel);
-                }
-
-                if (!Inventory::hasItem(Inventory::ItemType::BrassKey) || !LocationEvents::hasUnlockedChapel()) {
-                    commandList.push_back(new ExamineGrave);
-                }
-
+        } else {
+            commandList.push_back(new GameOver);
+            if (!LocationEvents::hasPressedVictory()) {
+                commandList.push_back(new Back);
             }
-            commandList.push_back(new GoWest);
-            commandList.push_back(new Inventory);
-            commandList.push_back(new Back);
-
-        } else if (Player::getX() == -1 && Player::getY() == 0) { // WEST
-
-            commandList.push_back(new LookAround);
-            if (LocationEvents::hasLookedAround(Player::getX(), Player::getY())) {
-                commandList.push_back(new TalkToTheWizard);
-            }
-            commandList.push_back(new GoEast);
-            commandList.push_back(new Inventory);
-            commandList.push_back(new Back);
-
-        } else if (Player::getX() == 0 && Player::getY() == -1) { // SOUTH
-
-            commandList.push_back(new LookAround);
-            if (LocationEvents::hasLookedAround(Player::getX(), Player::getY())) {
-                commandList.push_back(new SpeakWithBlacksmith);
-                commandList.push_back(new SpeakWithPriest);
-            }
-            commandList.push_back(new GoNorth);
-            commandList.push_back(new Inventory);
-            commandList.push_back(new Back);
-
         }
 
         Menu::start(commandList);

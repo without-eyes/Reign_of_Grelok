@@ -4,6 +4,7 @@
 #include <iostream>
 #include <conio.h>
 #include <wincon.h>
+#include <iomanip>
 
 void Menu::start(const std::vector<Command *> &commandList) {
     system("cls");
@@ -47,14 +48,14 @@ void Menu::start(const std::vector<Command *> &commandList) {
 void Menu::userInput(const std::vector<Command *> &commandList, int &userMenuPosition, bool &exitMenu) {
     int key = _getch();
 
-    mciSendString("play ..\\other\\sounds\\ui_menu_prevnext.wav", NULL, 0, NULL);
+    mciSendString(R"(play ..\other\sounds\ui_menu_prevnext.wav)", nullptr, 0, nullptr);
 
     if (key == 72 && (userMenuPosition >= 2 && userMenuPosition <= commandList.size())) {
         userMenuPosition--;
     } else if (key == 80 && (userMenuPosition >= 1 && userMenuPosition <= commandList.size() - 1)) {
         userMenuPosition++;
     } else if (key == '\r') {
-        mciSendString("play ..\\other\\sounds\\ui_menu_ok.wav", NULL, 0, NULL);
+        mciSendString(R"(play ..\other\sounds\ui_menu_ok.wav)", nullptr, 0, nullptr);
         commandList[userMenuPosition - 1]->execute();
         exitMenu = true;
     }
@@ -75,6 +76,8 @@ void Menu::start(const std::vector<Inventory::ItemType> &items) {
     bool exitInventory = false;
 
     while (!exitInventory) {
+        system("cls");
+
         TextOutput::removeBlinkingUnderscore();
 
         short sX = 3, sY = 1;
@@ -90,7 +93,7 @@ void Menu::start(const std::vector<Inventory::ItemType> &items) {
 
         TextOutput::placeStringOnScreen(sX, sY + 3);
         TextOutput::changeColor(FOREGROUND_GREEN);
-        std::cout << "> " + lowerText;
+        std::cout << "> " << lowerText;
 
         TextOutput::addBlinkingUnderscore();
 
@@ -107,7 +110,7 @@ void Menu::start(const std::vector<Inventory::ItemType> &items) {
 void Menu::userInput(const std::vector<Inventory::ItemType> &items, int &userInventoryPosition, bool &exitInventory) {
     int key = _getch();
 
-    mciSendString("play ..\\other\\sounds\\ui_menu_prevnext.wav", NULL, 0, NULL);
+    mciSendString(R"(play ..\other\sounds\ui_menu_prevnext.wav)", nullptr, 0, nullptr);
 
     int menuSize = items.size() + 1;
     if (key == 72 && (userInventoryPosition >= 2 && userInventoryPosition <= menuSize)) {
@@ -115,7 +118,7 @@ void Menu::userInput(const std::vector<Inventory::ItemType> &items, int &userInv
     } else if (key == 80 && (userInventoryPosition >= 1 && userInventoryPosition <= items.size())) {
         userInventoryPosition++;
     } else if (key == '\r') {
-        mciSendString("play ..\\other\\sounds\\ui_menu_ok.wav", NULL, 0, NULL);
+        mciSendString(R"(play ..\other\sounds\ui_menu_ok.wav)", nullptr, 0, nullptr);
 
         if (userInventoryPosition == menuSize) {
             exitInventory = true;

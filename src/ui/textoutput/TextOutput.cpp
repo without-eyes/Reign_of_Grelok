@@ -47,14 +47,15 @@ void TextOutput::writeText(const std::vector<std::string> &text) {
 
     for (const std::string &line: text) {
         if (_kbhit() && getch() == 13) {
+            mciSendString(R"(play ..\other\sounds\ui_menu_ok.wav)", NULL, 0, NULL);
             enterPressed = true;
             break;
         }
 
         if (line != text.back()) {
-            TextOutput::typingEffectOutput(("\n  " + line).c_str());
+            TextOutput::typingEffectOutput("\n  " + line);
         } else {
-            TextOutput::typingEffectOutput(("\n\n\n  > " + line).c_str());
+            TextOutput::typingEffectOutput("\n\n\n  > " + line);
         }
     }
 

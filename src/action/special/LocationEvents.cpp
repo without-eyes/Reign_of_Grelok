@@ -56,3 +56,19 @@ bool LocationEvents::hasFilledFlask() {
 void LocationEvents::changeValueFilledFlask() {
     filledFlask = !filledFlask;
 }
+
+bool LocationEvents::hasKilledGrelok() {
+    return killedGrelok;
+}
+
+void LocationEvents::changeValueKilledGrelok() {
+    killedGrelok = !killedGrelok;
+}
+
+bool LocationEvents::hasPressedVictory() {
+    return pressedVictory;
+}
+
+void LocationEvents::changeValuePressedVictory() {
+    pressedVictory = !pressedVictory;
+}

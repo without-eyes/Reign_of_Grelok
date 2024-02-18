@@ -35,9 +35,10 @@ void LookAround::execute() {
         case LocationType::Town:
             text.emplace_back("You're standing in the dusty market square of a quiet town. Many of");
             text.emplace_back("the shops and homes lie abandoned, and the citizens that can be seen");
-            text.emplace_back("speak in hushed voices, casting furtive glances at the darkened skyline");
-            text.emplace_back("in the distant north. The ringing of an anvil breaks the silence regularly,");
-            text.emplace_back("where a mustachioed blacksmith bends over his work in a nearby tent.\n");
+            text.emplace_back("speak in hushed voices, casting furtive glances at the darkened");
+            text.emplace_back("skyline in the distant north. The ringing of an anvil breaks the,");
+            text.emplace_back("silence regularly where a mustachioed blacksmith bends over his work");
+            text.emplace_back("in a nearby tent.\n");
 
             text.emplace_back("The blacksmith is here, working.\n");
 
@@ -48,8 +49,9 @@ void LookAround::execute() {
             text.emplace_back("You stand at the end of a dirt path, facing a small chapel. The");
             text.emplace_back("stucco walls are faded, many roof tiles are missing. The great oaken");
             text.emplace_back("doors are locked. The congregation is nowhere to be found. A small");
-            text.emplace_back("cemetery of crooked headstones lies in the shadow of the cracked steeple.");
-            text.emplace_back("The dirt path winds westward through a great, featureless plain.\n");
+            text.emplace_back("cemetery of crooked headstones lies in the shadow of the cracked.");
+            text.emplace_back("steeple The dirt path winds westward through a great, featureless");
+            text.emplace_back("plain.\n");
 
             if (!LocationEvents::hasZombieKilled()) {
                 text.emplace_back("A zombie totters aimlessly nearby.\n");
@@ -64,13 +66,14 @@ void LookAround::execute() {
             break;
 
         case LocationType::Swamp:
-            text.emplace_back("You are standing on a narrow stone path in a dark marsh. Greasy bubbles");
-            text.emplace_back("float to the top of the bog-waters on either side and pop lazily,");
-            text.emplace_back("spattering your legs with muck and slime. A short, stone tower squats");
-            text.emplace_back("here. No door is visible, and the stones are smooth and polished. A balcony");
-            text.emplace_back("juts out midway up the tower's face. The heady smells of incense mix with");
-            text.emplace_back("the nauseating stench of the swamp. The stone path unfurls eastward, towards");
-            text.emplace_back("a broad plain beyond the marshes.\n");
+            text.emplace_back("You are standing on a narrow stone path in a dark marsh. Greasy");
+            text.emplace_back("bubbles float to the top of the bog-waters on either side and pop,");
+            text.emplace_back("lazily spattering your legs with muck and slime. A short, stone");
+            text.emplace_back("tower squats here. No door is visible, and the stones are smooth");
+            text.emplace_back("and polished. A balcony juts out midway up the tower's face. The");
+            text.emplace_back("heady smells of incense mix with the nauseating stench of the swamp.");
+            text.emplace_back("The stone path unfurls eastward, towards a broad plain beyond the");
+            text.emplace_back("marshes.\n");
 
             text.emplace_back("A wizard is here, gesticulating wildly from his balcony.");
             break;

@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.27)
 project(Reign_of_Grelok)
 
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
 
 set(GAME_NAME Reign_of_Grelok)
 
@@ -32,6 +33,8 @@ add_executable(${GAME_NAME}
         include/rog/action/special/UseMagicalSwordGrelok.h
         src/action/basic/Back.cpp
         include/rog/action/basic/Back.h
+        src/action/special/GameOver.cpp
+        include/rog/action/special/GameOver.h
 )
 
 target_include_directories(

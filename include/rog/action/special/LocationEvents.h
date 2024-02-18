@@ -30,6 +30,14 @@ public:
 
     static void changeValueFilledFlask();
 
+    static bool hasKilledGrelok();
+
+    static void changeValueKilledGrelok();
+
+    static bool hasPressedVictory();
+
+    static void changeValuePressedVictory();
+
 private:
     inline static bool isLookedAround[3][3] = {false};
     inline static bool foundRawGemstone = false;
@@ -38,4 +46,6 @@ private:
     inline static bool spokeToWizard = false;
     inline static bool unlockedChapel = false;
     inline static bool filledFlask = false;
+    inline static bool killedGrelok = false;
+    inline static bool pressedVictory = false;
 };
