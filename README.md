@@ -28,4 +28,5 @@ To play this game you need 3 buttons:
 
 ### Authors
 Original mini-game: Copyright (c) 2008 Bethesda Game Studios, [Fallout 3 developers](http://fallout.wikia.com/wiki/Fallout_3_developers)
+
 C++ rewrite: Copyright (c) 2024 without eyes
