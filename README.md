@@ -14,8 +14,8 @@ This is a mini text adventure game written in C++. Original version of game was 
 To play a game you need:
 * to have an IDE(in this case i will use CLion);
 * Go to "Edit configurations";
-* Edit parameters as on the photo:
-![Algorithm schema](./other/images/screenshot/png)
+* Edit parameters as on the photo:<br />
+  ![Parameters](./other/images/screenshot.png)
 * Run program
 
 ### Game lore
