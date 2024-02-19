@@ -16,7 +16,7 @@ To play a game you need:
 * Go to "Edit configurations";
 * Edit parameters as on the photo:<br />
   ![Parameters](./other/images/screenshot.png)
-* Run program
+* Run program.
 
 ### Game lore
 You play as [Grognak](https://fallout.fandom.com/wiki/Grognak), a mighty barbarian, and your goal is to put an end to the terrible reign of [Grelok](https://fallout.fandom.com/wiki/Grelok), an evil wizard.
