@@ -8,7 +8,7 @@
 * [Authors](#authors)
 
 ### General info
-This is a mini text adventure game written in C++. Original version of game was used in one of the [terminals](https://fallout.fandom.com/wiki/Reign_of_Grelok) in [Fallout 3](https://en.wikipedia.org/wiki/Fallout_3) by Bethesda Game Studios.
+This is a mini text adventure game written in C++. Original version of game was used in [one of the terminals](https://fallout.fandom.com/wiki/Reign_of_Grelok) in [Fallout 3](https://en.wikipedia.org/wiki/Fallout_3) by Bethesda Game Studios.
 
 ### How to play
 To play a game you need:
